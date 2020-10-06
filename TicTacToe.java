@@ -89,13 +89,13 @@ public class TicTacToe {
 	    Y = (char) userInput.charAt(1) - 49;
 
 	} else {
-	    System.out.println("Invalid Entry, Try again!\nValid answer example: “A1”\n");
+	    System.out.println("Invalid Entry, Try again!\nValid answer example: â€œA1â€\n");
 	    valid = false;
 	}
 
 	// Check that the X / Y Values are valid
 	if (X < 0 || X > 2 || Y < 0 || Y > 2) {
-	    System.out.println("Invalid Entry, Try again!\nValid answer example: “A1”\n");
+	    System.out.println("Invalid Entry, Try again!\nValid answer example: â€œA1â€\n");
 	    valid = false;
 	} else {
 
@@ -193,6 +193,9 @@ public class TicTacToe {
 	    // Update winners array
 	    this.winners[this.currentNumberWinners] = dtf.format(now) + "," + playerTwo;
 	    this.currentNumberWinners += 1;
+		
+	    // Autosave
+	    writeResultsToFile();
 
 	} else if (winner == true && this.currentUser == 1) {
 	    System.out.println("Congratulations, Player one (" + playerOne + ") wins!\n");
@@ -203,6 +206,9 @@ public class TicTacToe {
 	    // Update winners array
 	    this.winners[this.currentNumberWinners] = dtf.format(now) + "," + playerOne;
 	    this.currentNumberWinners += 1;
+		
+	    // Autosave
+	    writeResultsToFile();
 
 	} else if (winner == false) {
 	    newGame(playerOne, playerTwo);
